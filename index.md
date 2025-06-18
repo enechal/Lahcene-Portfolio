@@ -13,10 +13,6 @@ Hello! I'm Lahcene, a creative web designer dedicated to building beautiful, fun
 - **UI/UX Consulting** to enhance user experience
 - **Website Redesign & Maintenance**
 
-## Featured Project
-### Business Landing Page
-A modern, responsive landing page designed for a local business to boost their online presence and attract new customers. [See more in my Portfolio](./portfolio)
-
 ## Why Choose Me?
 - Years of experience in web design
 - Focus on client satisfaction and results
