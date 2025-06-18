@@ -1,0 +1,9 @@
+theme: minima
+title: "Lahcene's Portfolio"
+description: "Web Design Services Portfolio"
+header_pages:
+  - index.md
+  - about.md
+  - services.md
+  - portfolio.md
+  - contact.md 
