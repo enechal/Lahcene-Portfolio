@@ -6,4 +6,8 @@ header_pages:
   - about.md
   - services.md
   - portfolio.md
-  - contact.md 
+  - contact.md
+
+# Add custom CSS
+minima:
+  include_assets: true 
