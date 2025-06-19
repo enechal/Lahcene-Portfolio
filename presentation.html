@@ -167,6 +167,40 @@
             color: var(--text-color);
             font-size: 0.9em;
         }
+        
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .presentation-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .presentation-image:hover {
+            transform: scale(1.05);
+        }
+        
+        .tech-stack {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+        
+        .tech-badge {
+            background: var(--accent-color);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -195,6 +229,12 @@
                 <script type="text/template">
                     ## About Me
                     
+                    <div class="image-container">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop" 
+                             alt="Web Designer at Work" 
+                             class="presentation-image">
+                    </div>
+                    
                     <div class="service-card">
                         ### 🎯 My Mission
                         
@@ -216,6 +256,12 @@
             <section class="center" data-markdown>
                 <script type="text/template">
                     ## My Experience
+                    
+                    <div class="image-container">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=300&fit=crop" 
+                             alt="Analytics Dashboard" 
+                             class="presentation-image">
+                    </div>
                     
                     <div class="stats">
                         <div class="stat-item">
@@ -247,6 +293,12 @@
             <section data-markdown>
                 <script type="text/template">
                     ## Services Offered
+                    
+                    <div class="image-container">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=300&fit=crop" 
+                             alt="Web Design Services" 
+                             class="presentation-image">
+                    </div>
                     
                     <div class="grid-2">
                         <div class="service-card">
@@ -289,9 +341,20 @@
                     <div class="project-card">
                         ### 🏢 Project 1: Business Landing Page
                         
+                        <div class="image-container">
+                            <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=500&h=300&fit=crop" 
+                                 alt="Business Landing Page" 
+                                 class="presentation-image">
+                        </div>
+                        
                         A **modern, responsive** landing page for a local business. Features clean design, fast loading, and mobile optimization.
                         
-                        **Technologies:** HTML5, CSS3, JavaScript, Bootstrap
+                        <div class="tech-stack">
+                            <span class="tech-badge">HTML5</span>
+                            <span class="tech-badge">CSS3</span>
+                            <span class="tech-badge">JavaScript</span>
+                            <span class="tech-badge">Bootstrap</span>
+                        </div>
                     </div>
                     
                     ---
@@ -299,9 +362,19 @@
                     <div class="project-card">
                         ### 📝 Project 2: Personal Blog
                         
+                        <div class="image-container">
+                            <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=500&h=300&fit=crop" 
+                                 alt="Personal Blog" 
+                                 class="presentation-image">
+                        </div>
+                        
                         A **clean and minimal** blog for sharing thoughts and stories. Focused on readability and user experience.
                         
-                        **Technologies:** Jekyll, Markdown, Responsive Design
+                        <div class="tech-stack">
+                            <span class="tech-badge">Jekyll</span>
+                            <span class="tech-badge">Markdown</span>
+                            <span class="tech-badge">Responsive Design</span>
+                        </div>
                     </div>
                     
                     ---
@@ -309,9 +382,20 @@
                     <div class="project-card">
                         ### 🛒 Project 3: E-commerce Store
                         
+                        <div class="image-container">
+                            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&h=300&fit=crop" 
+                                 alt="E-commerce Store" 
+                                 class="presentation-image">
+                        </div>
+                        
                         A **fully functional** online store with shopping cart and checkout. Secure payment integration and inventory management.
                         
-                        **Technologies:** React, Node.js, Stripe API, MongoDB
+                        <div class="tech-stack">
+                            <span class="tech-badge">React</span>
+                            <span class="tech-badge">Node.js</span>
+                            <span class="tech-badge">Stripe API</span>
+                            <span class="tech-badge">MongoDB</span>
+                        </div>
                     </div>
                     
                     ---
@@ -324,6 +408,12 @@
             <section class="center" data-markdown>
                 <script type="text/template">
                     ## Let's Work Together
+                    
+                    <div class="image-container">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=500&h=300&fit=crop" 
+                             alt="Contact and Collaboration" 
+                             class="presentation-image">
+                    </div>
                     
                     <div class="contact-info">
                         ### 📞 Get In Touch
@@ -372,7 +462,7 @@
     
     <script>
         Reveal.initialize({
-            // Navigation
+            // Navigation - Both vertical and horizontal
             hash: true,
             navigationMode: 'both', // Enable both vertical and horizontal navigation
             controls: true,
@@ -400,7 +490,7 @@
             autoSlideMethod: Reveal.navigateNext,
             defaultTiming: null,
             
-            // Interaction
+            // Interaction - Enhanced for dual navigation
             mouseWheel: true,
             hideInactiveCursor: true,
             hideCursorTime: 5000,
