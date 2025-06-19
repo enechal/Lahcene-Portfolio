@@ -214,34 +214,32 @@
             font-weight: bold;
         }
         
-        /* Custom Navigation Buttons */
-        .custom-nav {
+        /* Simple Navigation - 4 Buttons */
+        .simple-nav {
             position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
             z-index: 1000;
+            display: flex;
+            gap: 15px;
             background: rgba(52, 152, 219, 0.9);
             border-radius: 50px;
-            padding: 10px;
+            padding: 15px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            transition: all 0.3s ease;
-        }
-        
-        .custom-nav:hover {
-            background: rgba(52, 152, 219, 1);
-            transform: scale(1.1);
         }
         
         .nav-button {
             background: none;
             border: none;
             color: white;
-            font-size: 24px;
+            font-size: 20px;
             cursor: pointer;
-            padding: 10px;
-            margin: 0 5px;
+            padding: 12px;
             border-radius: 50%;
             transition: all 0.3s ease;
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -249,47 +247,11 @@
         
         .nav-button:hover {
             background: rgba(255, 255, 255, 0.2);
-            transform: scale(1.2);
+            transform: scale(1.1);
         }
         
         .nav-button:active {
             transform: scale(0.95);
-        }
-        
-        /* Horizontal Navigation */
-        .nav-horizontal {
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-        }
-        
-        /* Vertical Navigation */
-        .nav-vertical {
-            right: 30px;
-            top: 50%;
-            transform: translateY(-50%);
-            flex-direction: column;
-            gap: 10px;
-        }
-        
-        /* Navigation Labels */
-        .nav-label {
-            position: absolute;
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 12px;
-            white-space: nowrap;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-        }
-        
-        .nav-button:hover .nav-label {
-            opacity: 1;
         }
         
         /* Fullscreen indicator */
@@ -313,43 +275,19 @@
         📺 Fullscreen Presentation
     </div>
     
-    <!-- Horizontal Navigation -->
-    <div class="custom-nav nav-horizontal">
+    <!-- Simple Navigation - 4 Buttons -->
+    <div class="simple-nav">
         <button class="nav-button" onclick="Reveal.navigatePrev()" title="Previous Slide">
             ←
-            <span class="nav-label">Previous</span>
         </button>
         <button class="nav-button" onclick="Reveal.navigateNext()" title="Next Slide">
             →
-            <span class="nav-label">Next</span>
         </button>
         <button class="nav-button" onclick="Reveal.toggleOverview()" title="Overview">
             ⊞
-            <span class="nav-label">Overview</span>
         </button>
         <button class="nav-button" onclick="toggleFullscreen()" title="Fullscreen">
             ⛶
-            <span class="nav-label">Fullscreen</span>
-        </button>
-    </div>
-    
-    <!-- Vertical Navigation -->
-    <div class="custom-nav nav-vertical">
-        <button class="nav-button" onclick="Reveal.navigateUp()" title="Up">
-            ↑
-            <span class="nav-label">Up</span>
-        </button>
-        <button class="nav-button" onclick="Reveal.navigateDown()" title="Down">
-            ↓
-            <span class="nav-label">Down</span>
-        </button>
-        <button class="nav-button" onclick="Reveal.navigateLeft()" title="Left">
-            ←
-            <span class="nav-label">Left</span>
-        </button>
-        <button class="nav-button" onclick="Reveal.navigateRight()" title="Right">
-            →
-            <span class="nav-label">Right</span>
         </button>
     </div>
     
@@ -578,9 +516,9 @@
         });
         
         Reveal.initialize({
-            // Navigation - Both vertical and horizontal
+            // Navigation - Simple horizontal only
             hash: true,
-            navigationMode: 'both', // Enable both vertical and horizontal navigation
+            navigationMode: 'default', // Simple horizontal navigation
             controls: false, // Hide default controls since we have custom ones
             progress: true,
             center: false,
@@ -606,7 +544,7 @@
             autoSlideMethod: Reveal.navigateNext,
             defaultTiming: null,
             
-            // Interaction - Enhanced for dual navigation
+            // Interaction
             mouseWheel: true,
             hideInactiveCursor: true,
             hideCursorTime: 5000,
