@@ -7,17 +7,46 @@
     
     <!-- Reveal.js CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/theme/white.css">
     
-    <!-- Custom CSS -->
+    <!-- Custom Theme -->
     <style>
+        :root {
+            --main-color: #2c3e50;
+            --accent-color: #3498db;
+            --bg-color: #ecf0f1;
+            --text-color: #2c3e50;
+            --card-bg: #ffffff;
+        }
+        
+        .reveal {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .reveal .slides {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            margin: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
         .reveal h1, .reveal h2, .reveal h3 {
-            color: #2c3e50;
-            font-weight: 600;
+            color: var(--main-color);
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .reveal h1 {
+            font-size: 3.5em;
+            background: linear-gradient(45deg, var(--accent-color), #9b59b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .reveal .slides section {
             text-align: left;
+            padding: 40px;
         }
         
         .reveal .slides section.center {
@@ -25,48 +54,118 @@
         }
         
         .highlight {
-            color: #3498db;
+            color: var(--accent-color);
             font-weight: bold;
+            font-size: 1.2em;
         }
         
         .service-card {
-            background: #f8f9fa;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 10px 0;
-            border-left: 4px solid #3498db;
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 15px 0;
+            border-left: 5px solid var(--accent-color);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
         }
         
         .contact-info {
-            background: #ecf0f1;
-            border-radius: 8px;
-            padding: 20px;
+            background: linear-gradient(135deg, var(--accent-color), #9b59b6);
+            color: white;
+            border-radius: 15px;
+            padding: 25px;
             margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
         
         .portfolio-link {
             display: inline-block;
-            background: #3498db;
+            background: linear-gradient(45deg, var(--accent-color), #9b59b6);
             color: white;
-            padding: 12px 24px;
+            padding: 15px 30px;
             text-decoration: none;
-            border-radius: 6px;
+            border-radius: 25px;
             margin-top: 20px;
-            transition: background 0.3s;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
         
         .portfolio-link:hover {
-            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
             color: white;
         }
         
         .project-card {
-            background: #ffffff;
-            border: 1px solid #e9ecef;
-            border-radius: 8px;
-            padding: 15px;
-            margin: 10px 0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background: var(--card-bg);
+            border: 2px solid #e9ecef;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover {
+            border-color: var(--accent-color);
+            transform: scale(1.02);
+        }
+        
+        .emoji-icon {
+            font-size: 2em;
+            margin-right: 15px;
+        }
+        
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid var(--accent-color);
+            margin: 20px auto;
+            display: block;
+            background: linear-gradient(45deg, var(--accent-color), #9b59b6);
+            color: white;
+            font-size: 4em;
+            line-height: 140px;
+            text-align: center;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+        
+        .stat-label {
+            color: var(--text-color);
+            font-size: 0.9em;
         }
     </style>
 </head>
@@ -75,125 +174,190 @@
         <div class="slides">
             
             <!-- Slide 1: Title -->
-            <section class="center">
-                <h1>Lahcene</h1>
-                <h2>Web Designer & Developer</h2>
-                <p class="highlight">Creating beautiful, functional websites</p>
-                <br>
-                <p>Portfolio Presentation</p>
-                <small>Web Design & Development Services</small>
+            <section class="center" data-markdown>
+                <script type="text/template">
+                    # Lahcene
+                    ## Web Designer & Developer
+                    
+                    <div class="profile-image">👨‍💻</div>
+                    
+                    **Creating beautiful, functional websites**
+                    
+                    ---
+                    
+                    ### Portfolio Presentation
+                    *Web Design & Development Services*
+                </script>
             </section>
             
             <!-- Slide 2: About -->
-            <section>
-                <h2>About Me</h2>
-                <div class="service-card">
-                    <h3>🎯 My Mission</h3>
-                    <p>I am a passionate web designer with years of experience creating beautiful, user-friendly websites for clients worldwide. My mission is to help businesses and individuals establish a strong online presence through modern, responsive design.</p>
-                </div>
-                
-                <div class="service-card">
-                    <h3>🚀 What I Do</h3>
-                    <ul>
-                        <li><strong>Creative Design:</strong> Beautiful, modern websites</li>
-                        <li><strong>User Experience:</strong> Intuitive and accessible designs</li>
-                        <li><strong>Responsive Layouts:</strong> Mobile-friendly for all devices</li>
-                        <li><strong>Client Focus:</strong> Dedicated to your success</li>
-                    </ul>
-                </div>
-            </section>
-            
-            <!-- Slide 3: Services -->
-            <section>
-                <h2>Services Offered</h2>
-                
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <section data-markdown>
+                <script type="text/template">
+                    ## About Me
+                    
                     <div class="service-card">
-                        <h3>🎨 Web Design</h3>
-                        <ul>
-                            <li>Custom Website Design</li>
-                            <li>Responsive & Mobile-Friendly Layouts</li>
-                            <li>Website Redesign</li>
-                            <li>UI/UX Consulting</li>
-                        </ul>
+                        ### 🎯 My Mission
+                        
+                        I am a **passionate web designer** with years of experience creating beautiful, user-friendly websites for clients worldwide. My mission is to help businesses and individuals establish a **strong online presence** through modern, responsive design.
                     </div>
                     
                     <div class="service-card">
-                        <h3>🔧 Technical Services</h3>
-                        <ul>
-                            <li>Maintenance & Support</li>
-                            <li>Performance Optimization</li>
-                            <li>SEO Best Practices</li>
-                            <li>Security Implementation</li>
-                        </ul>
+                        ### 🚀 What I Do
+                        
+                        - **Creative Design:** Beautiful, modern websites
+                        - **User Experience:** Intuitive and accessible designs  
+                        - **Responsive Layouts:** Mobile-friendly for all devices
+                        - **Client Focus:** Dedicated to your success
                     </div>
-                </div>
-                
-                <div class="service-card">
-                    <h3>💼 Why Choose Me?</h3>
-                    <ul>
-                        <li>Years of experience in web design</li>
-                        <li>Focus on client satisfaction and results</li>
-                        <li>Clean, modern, and accessible designs</li>
-                        <li>Free consultation for all projects</li>
-                    </ul>
-                </div>
+                </script>
             </section>
             
-            <!-- Slide 4: Portfolio Projects -->
-            <section>
-                <h2>Portfolio Highlights</h2>
-                
-                <div class="project-card">
-                    <h3>🏢 Project 1: Business Landing Page</h3>
-                    <p>A modern, responsive landing page for a local business. Features clean design, fast loading, and mobile optimization.</p>
-                </div>
-                
-                <div class="project-card">
-                    <h3>📝 Project 2: Personal Blog</h3>
-                    <p>A clean and minimal blog for sharing thoughts and stories. Focused on readability and user experience.</p>
-                </div>
-                
-                <div class="project-card">
-                    <h3>🛒 Project 3: E-commerce Store</h3>
-                    <p>A fully functional online store with shopping cart and checkout. Secure payment integration and inventory management.</p>
-                </div>
-                
-                <p style="margin-top: 20px; font-style: italic; color: #7f8c8d;">
-                    <strong>More projects coming soon!</strong>
-                </p>
+            <!-- Slide 3: Stats -->
+            <section class="center" data-markdown>
+                <script type="text/template">
+                    ## My Experience
+                    
+                    <div class="stats">
+                        <div class="stat-item">
+                            <div class="stat-number">5+</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Projects Completed</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Client Satisfaction</div>
+                        </div>
+                    </div>
+                    
+                    ---
+                    
+                    ### 🏆 Why Choose Me?
+                    
+                    - **Proven Track Record** with successful projects
+                    - **Modern Technology Stack** using latest tools
+                    - **Client-Focused Approach** with personalized solutions
+                    - **Clean, Professional Designs** that reflect your brand
+                </script>
             </section>
             
-            <!-- Slide 5: Contact & Next Steps -->
-            <section class="center">
-                <h2>Let's Work Together</h2>
-                
-                <div class="contact-info">
-                    <h3>📞 Get In Touch</h3>
-                    <p><strong>Ready to start your project?</strong></p>
-                    <p>Contact me today for a free consultation!</p>
-                </div>
-                
-                <div class="service-card">
-                    <h3>📧 Contact Information</h3>
-                    <ul>
-                        <li><strong>Email:</strong> lahcene@example.com</li>
-                        <li><strong>Phone:</strong> +123 456 7890</li>
-                        <li><strong>LinkedIn:</strong> linkedin.com/in/lahcene</li>
-                    </ul>
-                </div>
-                
-                <div class="service-card">
-                    <h3>🌐 Live Portfolio</h3>
-                    <p>Visit my live portfolio to see more of my work:</p>
-                    <a href="https://enechal.github.io/Lahcene-Portfolio/" class="portfolio-link" target="_blank">
-                        View Portfolio
-                    </a>
-                </div>
-                
-                <p style="margin-top: 40px; font-size: 0.8em; color: #7f8c8d;">
-                    Thank you for your time!
-                </p>
+            <!-- Slide 4: Services -->
+            <section data-markdown>
+                <script type="text/template">
+                    ## Services Offered
+                    
+                    <div class="grid-2">
+                        <div class="service-card">
+                            ### 🎨 Web Design
+                            
+                            - Custom Website Design
+                            - Responsive & Mobile-Friendly Layouts
+                            - Website Redesign
+                            - UI/UX Consulting
+                        </div>
+                        
+                        <div class="service-card">
+                            ### 🔧 Technical Services
+                            
+                            - Maintenance & Support
+                            - Performance Optimization
+                            - SEO Best Practices
+                            - Security Implementation
+                        </div>
+                    </div>
+                    
+                    ---
+                    
+                    <div class="service-card">
+                        ### 💼 Additional Services
+                        
+                        - **E-commerce Development** with secure payment integration
+                        - **Content Management Systems** for easy updates
+                        - **Website Analytics** and performance monitoring
+                        - **Ongoing Support** and maintenance packages
+                    </div>
+                </script>
+            </section>
+            
+            <!-- Slide 5: Portfolio Projects -->
+            <section data-markdown>
+                <script type="text/template">
+                    ## Portfolio Highlights
+                    
+                    <div class="project-card">
+                        ### 🏢 Project 1: Business Landing Page
+                        
+                        A **modern, responsive** landing page for a local business. Features clean design, fast loading, and mobile optimization.
+                        
+                        **Technologies:** HTML5, CSS3, JavaScript, Bootstrap
+                    </div>
+                    
+                    ---
+                    
+                    <div class="project-card">
+                        ### 📝 Project 2: Personal Blog
+                        
+                        A **clean and minimal** blog for sharing thoughts and stories. Focused on readability and user experience.
+                        
+                        **Technologies:** Jekyll, Markdown, Responsive Design
+                    </div>
+                    
+                    ---
+                    
+                    <div class="project-card">
+                        ### 🛒 Project 3: E-commerce Store
+                        
+                        A **fully functional** online store with shopping cart and checkout. Secure payment integration and inventory management.
+                        
+                        **Technologies:** React, Node.js, Stripe API, MongoDB
+                    </div>
+                    
+                    ---
+                    
+                    *More projects coming soon!* 🚀
+                </script>
+            </section>
+            
+            <!-- Slide 6: Contact & Next Steps -->
+            <section class="center" data-markdown>
+                <script type="text/template">
+                    ## Let's Work Together
+                    
+                    <div class="contact-info">
+                        ### 📞 Get In Touch
+                        
+                        **Ready to start your project?**
+                        
+                        Contact me today for a **free consultation**!
+                    </div>
+                    
+                    ---
+                    
+                    <div class="service-card">
+                        ### 📧 Contact Information
+                        
+                        - **Email:** lahcene@example.com
+                        - **Phone:** +123 456 7890
+                        - **LinkedIn:** linkedin.com/in/lahcene
+                        - **GitHub:** github.com/lahcene
+                    </div>
+                    
+                    ---
+                    
+                    <div class="service-card">
+                        ### 🌐 Live Portfolio
+                        
+                        Visit my live portfolio to see more of my work:
+                        
+                        [View Portfolio](https://enechal.github.io/Lahcene-Portfolio/){: .portfolio-link}
+                    </div>
+                    
+                    ---
+                    
+                    *Thank you for your time!* 👋
+                </script>
             </section>
             
         </div>
@@ -201,39 +365,55 @@
     
     <!-- Reveal.js JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/markdown/markdown.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/highlight/highlight.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/notes/notes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/zoom/zoom.js"></script>
+    
     <script>
         Reveal.initialize({
+            // Navigation
             hash: true,
-            transition: 'slide',
-            transitionSpeed: 'default',
-            backgroundTransition: 'fade',
+            navigationMode: 'both', // Enable both vertical and horizontal navigation
             controls: true,
             progress: true,
             center: false,
             touch: true,
             loop: false,
             rtl: false,
-            navigationMode: 'default',
-            shuffle: false,
+            
+            // Transitions
+            transition: 'slide',
+            transitionSpeed: 'default',
+            backgroundTransition: 'fade',
+            
+            // Features
             fragments: true,
             fragmentInURL: false,
             embedded: false,
             help: true,
             showNotes: false,
-            autoPlayMedia: null,
-            preloadIframes: null,
+            
+            // Auto-play
             autoSlide: 0,
             autoSlideStoppable: true,
             autoSlideMethod: Reveal.navigateNext,
             defaultTiming: null,
-            mouseWheel: false,
+            
+            // Interaction
+            mouseWheel: true,
             hideInactiveCursor: true,
             hideCursorTime: 5000,
             previewLinks: false,
-            postMessage: true,
-            postMessageEvents: false,
-            focusBodyOnPageVisibilityChange: true,
-            plugins: []
+            
+            // Plugins
+            plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom ],
+            
+            // Markdown configuration
+            markdown: {
+                smartypants: true,
+                breaks: true
+            }
         });
     </script>
 </body>
