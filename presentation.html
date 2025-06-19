@@ -1,4 +1,5 @@
 <!-- Force redeploy: 2024-05-18 -->
+<!-- Custom nav removed: 2024-05-18 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -231,46 +232,6 @@
             font-weight: bold;
         }
         
-        /* Directional Navigation - 4 Buttons */
-        .directional-nav {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1000;
-            display: flex;
-            gap: 15px;
-            background: rgba(52, 152, 219, 0.9);
-            border-radius: 50px;
-            padding: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-        
-        .nav-button {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 20px;
-            cursor: pointer;
-            padding: 12px;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-            width: 45px;
-            height: 45px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .nav-button:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: scale(1.1);
-        }
-        
-        .nav-button:active {
-            transform: scale(0.95);
-        }
-        
         /* Fullscreen indicator */
         .fullscreen-indicator {
             position: fixed;
@@ -339,22 +300,6 @@
     </style>
 </head>
 <body>
-    <!-- Directional Navigation - 4 Buttons (Up, Down, Left, Right) -->
-    <div class="directional-nav">
-        <button class="nav-button" onclick="windowScroll(-1)" title="Up">
-            ↑
-        </button>
-        <button class="nav-button" onclick="windowScroll(1)" title="Down">
-            ↓
-        </button>
-        <button class="nav-button" onclick="Reveal.navigateLeft()" title="Left">
-            ←
-        </button>
-        <button class="nav-button" onclick="Reveal.navigateRight()" title="Right">
-            →
-        </button>
-    </div>
-    
     <div class="reveal">
         <div class="slides">
             
@@ -536,15 +481,6 @@ I am a **passionate web designer** with years of experience creating beautiful, 
                 breaks: true
             }
         });
-
-        // Scroll the whole window up or down
-        function windowScroll(direction) {
-            window.scrollBy({
-                top: direction * 100,
-                left: 0,
-                behavior: 'smooth'
-            });
-        }
     </script>
 </body>
 </html> 
