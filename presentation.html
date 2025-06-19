@@ -1,14 +1,15 @@
+<!-- Force redeploy: 2024-05-18 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lahcene - Web Designer Portfolio</title>
+    <title>Lahcene - Portfolio Presentation</title>
     
     <!-- Reveal.js CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/theme/moon.css">
     
-    <!-- Custom Theme -->
     <style>
         :root {
             --main-color: #2c3e50;
@@ -21,23 +22,24 @@
         body {
             margin: 0;
             padding: 0;
-            overflow: hidden;
+            overflow-x: auto;
         }
         
         .reveal {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            height: 100vh;
-            width: 100vw;
+            min-height: 100vh;
+            width: 100%;
         }
         
         .reveal .slides {
             background: rgba(255, 255, 255, 0.95);
             border-radius: 15px;
-            margin: 20px;
+            margin: 20px auto;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            height: calc(100vh - 40px);
-            width: calc(100vw - 40px);
+            min-height: 600px;
+            max-width: 1200px;
+            width: 95%;
         }
         
         .reveal h1, .reveal h2, .reveal h3 {
@@ -47,11 +49,24 @@
         }
         
         .reveal h1 {
-            font-size: 3.5em;
+            font-size: 4em;
             background: linear-gradient(45deg, var(--accent-color), #9b59b6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+        }
+        
+        .reveal h2 {
+            font-size: 2.5em;
+        }
+        
+        .reveal h3 {
+            font-size: 1.5em;
+        }
+        
+        .reveal p, .reveal li, .reveal .stat-label, .reveal .service-card, .reveal .project-card {
+            font-size: 1.25em;
+            line-height: 1.6;
         }
         
         .reveal .slides section {
@@ -59,6 +74,8 @@
             padding: 40px;
             height: 100%;
             box-sizing: border-box;
+            max-width: 1100px;
+            margin: 0 auto 120px auto;
         }
         
         .reveal .slides section.center {
@@ -71,7 +88,7 @@
             font-size: 1.2em;
         }
         
-        .service-card {
+        .service-card, .project-card {
             background: var(--card-bg);
             border-radius: 15px;
             padding: 25px;
@@ -79,9 +96,14 @@
             border-left: 5px solid var(--accent-color);
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
+            max-width: 90%;
+            word-break: break-word;
+            overflow-wrap: break-word;
+            margin-left: auto;
+            margin-right: auto;
         }
         
-        .service-card:hover {
+        .service-card:hover, .project-card:hover {
             transform: translateY(-5px);
         }
         
@@ -110,21 +132,6 @@
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(0,0,0,0.3);
             color: white;
-        }
-        
-        .project-card {
-            background: var(--card-bg);
-            border: 2px solid #e9ecef;
-            border-radius: 15px;
-            padding: 20px;
-            margin: 15px 0;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .project-card:hover {
-            border-color: var(--accent-color);
-            transform: scale(1.02);
         }
         
         .emoji-icon {
@@ -162,11 +169,13 @@
             display: flex;
             justify-content: space-around;
             margin: 30px 0;
+            flex-wrap: wrap;
         }
         
         .stat-item {
             text-align: center;
             padding: 20px;
+            min-width: 120px;
         }
         
         .stat-number {
@@ -183,6 +192,14 @@
         .image-container {
             text-align: center;
             margin: 20px 0;
+        }
+        
+        .image-container img.presentation-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .presentation-image {
@@ -267,20 +284,67 @@
             z-index: 1000;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
+        
+        .reveal .slide-image {
+            max-width: 80%;
+            height: auto;
+            margin: 30px auto 20px auto;
+            display: block;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+        }
+        
+        .reveal .slide-card {
+            background: rgba(255,255,255,0.85);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px auto;
+            max-width: 800px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+        
+        .reveal .slide-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+        }
+        
+        .reveal .stat {
+            text-align: center;
+            font-size: 1.3em;
+            color: #3498db;
+        }
+        
+        .reveal .stat strong {
+            font-size: 2em;
+            display: block;
+            color: #2c3e50;
+        }
+        
+        .reveal .slide-contact {
+            background: linear-gradient(90deg, #6a82fb 0%, #fc5c7d 100%);
+            color: #fff;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px auto;
+            max-width: 700px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+        
+        .reveal .slide-contact a {
+            color: #fff;
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
-    <!-- Fullscreen Indicator -->
-    <div class="fullscreen-indicator">
-        📺 Fullscreen Presentation
-    </div>
-    
     <!-- Directional Navigation - 4 Buttons (Up, Down, Left, Right) -->
     <div class="directional-nav">
-        <button class="nav-button" onclick="Reveal.navigateUp()" title="Up">
+        <button class="nav-button" onclick="windowScroll(-1)" title="Up">
             ↑
         </button>
-        <button class="nav-button" onclick="Reveal.navigateDown()" title="Down">
+        <button class="nav-button" onclick="windowScroll(1)" title="Down">
             ↓
         </button>
         <button class="nav-button" onclick="Reveal.navigateLeft()" title="Left">
@@ -294,191 +358,126 @@
     <div class="reveal">
         <div class="slides">
             
-            <!-- Slide 1: Title -->
-            <section class="center" data-markdown>
-                <script type="text/template">
-                    # Lahcene
-                    ## Web Designer & Developer
-                    
-                    <div class="profile-image">👨‍💻</div>
-                    
-                    <div class="image-container">
-                        <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&h=300&fit=crop" 
-                             alt="Web Development" 
-                             class="presentation-image">
-                    </div>
-                    
-                    **Creating beautiful, functional websites**
-                    
-                    ### Portfolio Presentation
-                    *Web Design & Development Services*
-                </script>
-            </section>
-            
-            <!-- Slide 2: About & Experience -->
+            <!-- Slide 1: Title (Horizontal) -->
             <section data-markdown>
                 <script type="text/template">
-                    ## About Me & Experience
-                    
-                    <div class="image-container">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=300&fit=crop" 
-                             alt="Web Designer at Work" 
-                             class="presentation-image">
-                    </div>
-                    
-                    <div class="service-card">
-                        ### 🎯 My Mission
-                        
-                        I am a **passionate web designer** with years of experience creating beautiful, user-friendly websites for clients worldwide. My mission is to help businesses and individuals establish a **strong online presence** through modern, responsive design.
-                    </div>
-                    
-                    <div class="stats">
-                        <div class="stat-item">
-                            <div class="stat-number">5+</div>
-                            <div class="stat-label">Years Experience</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">50+</div>
-                            <div class="stat-label">Projects Completed</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">100%</div>
-                            <div class="stat-label">Client Satisfaction</div>
-                        </div>
-                    </div>
+# Lahcene's Portfolio
+
+![Profile](https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&h=300&fit=crop)
+
+**Web Designer & Developer**
+
+*Modern, creative, and user-focused web solutions.*
                 </script>
             </section>
             
-            <!-- Slide 3: Services -->
+            <!-- Slide 2: About (Horizontal) -->
+            <section>
+                <!-- Vertical Slide 2.1: Mission -->
+                <section data-markdown>
+                    <script type="text/template">
+## About Me
+
+![About](https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=300&fit=crop)
+
+<div class="slide-card">
+### 🎯 My Mission
+
+I am a **passionate web designer** with years of experience creating beautiful, user-friendly websites for clients worldwide. My mission is to help businesses and individuals establish a **strong online presence** through modern, responsive design.
+</div>
+                    </script>
+                </section>
+                <!-- Vertical Slide 2.2: Stats -->
+                <section data-markdown>
+                    <script type="text/template">
+## Experience & Values
+
+<div class="slide-stats">
+  <div class="stat"><strong>5+</strong>Years Experience</div>
+  <div class="stat"><strong>50+</strong>Projects Completed</div>
+  <div class="stat"><strong>100%</strong>Client Satisfaction</div>
+</div>
+
+- **Innovation:** Always learning and applying new tech
+- **Quality:** Clean, maintainable code
+- **Results:** Focused on your business goals
+                    </script>
+                </section>
+            </section>
+            
+            <!-- Slide 3: Services (Horizontal) -->
+            <section>
+                <!-- Vertical Slide 3.1: Web Design -->
+                <section data-markdown>
+                    <script type="text/template">
+## Services: Web Design
+
+![Design](https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=300&fit=crop)
+
+- Custom Website Design
+- Responsive & Mobile-Friendly Layouts
+- UI/UX Consulting
+- Website Redesign
+                    </script>
+                </section>
+                <!-- Vertical Slide 3.2: Technical -->
+                <section data-markdown>
+                    <script type="text/template">
+## Services: Technical
+
+![Technical](https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=300&fit=crop)
+
+- Maintenance & Support
+- Performance Optimization
+- SEO Best Practices
+- Security Implementation
+                    </script>
+                </section>
+            </section>
+            
+            <!-- Slide 4: Portfolio (Horizontal) -->
+            <section>
+                <!-- Vertical Slide 4.1: Projects -->
+                <section data-markdown>
+                    <script type="text/template">
+## Portfolio Highlights
+
+![Portfolio](https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=600&h=300&fit=crop)
+
+- **Business Landing Page:** Modern, responsive, fast
+- **Personal Blog:** Clean, minimal, focused on content
+- **E-commerce Store:** Secure, scalable, user-friendly
+                    </script>
+                </section>
+                <!-- Vertical Slide 4.2: More Projects -->
+                <section data-markdown>
+                    <script type="text/template">
+## More Projects
+
+![More Projects](https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=600&h=300&fit=crop)
+
+- Portfolio for Creatives
+- Online Booking Platform
+- Nonprofit Organization Site
+                    </script>
+                </section>
+            </section>
+            
+            <!-- Slide 5: Contact (Horizontal) -->
             <section data-markdown>
                 <script type="text/template">
-                    ## Services Offered
-                    
-                    <div class="image-container">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=300&fit=crop" 
-                             alt="Web Design Services" 
-                             class="presentation-image">
-                    </div>
-                    
-                    <div class="grid-2">
-                        <div class="service-card">
-                            ### 🎨 Web Design
-                            
-                            - Custom Website Design
-                            - Responsive & Mobile-Friendly Layouts
-                            - Website Redesign
-                            - UI/UX Consulting
-                        </div>
-                        
-                        <div class="service-card">
-                            ### 🔧 Technical Services
-                            
-                            - Maintenance & Support
-                            - Performance Optimization
-                            - SEO Best Practices
-                            - Security Implementation
-                        </div>
-                    </div>
-                    
-                    <div class="service-card">
-                        ### 💼 Additional Services
-                        
-                        - **E-commerce Development** with secure payment integration
-                        - **Content Management Systems** for easy updates
-                        - **Website Analytics** and performance monitoring
-                        - **Ongoing Support** and maintenance packages
-                    </div>
-                </script>
-            </section>
-            
-            <!-- Slide 4: Portfolio Projects -->
-            <section data-markdown>
-                <script type="text/template">
-                    ## Portfolio Highlights
-                    
-                    <div class="image-container">
-                        <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=600&h=300&fit=crop" 
-                             alt="Portfolio Projects" 
-                             class="presentation-image">
-                    </div>
-                    
-                    <div class="grid-3">
-                        <div class="project-card">
-                            ### 🏢 Business Landing Page
-                            
-                            A **modern, responsive** landing page for a local business. Features clean design, fast loading, and mobile optimization.
-                            
-                            <div class="tech-stack">
-                                <span class="tech-badge">HTML5</span>
-                                <span class="tech-badge">CSS3</span>
-                                <span class="tech-badge">Bootstrap</span>
-                            </div>
-                        </div>
-                        
-                        <div class="project-card">
-                            ### 📝 Personal Blog
-                            
-                            A **clean and minimal** blog for sharing thoughts and stories. Focused on readability and user experience.
-                            
-                            <div class="tech-stack">
-                                <span class="tech-badge">Jekyll</span>
-                                <span class="tech-badge">Markdown</span>
-                                <span class="tech-badge">Responsive</span>
-                            </div>
-                        </div>
-                        
-                        <div class="project-card">
-                            ### 🛒 E-commerce Store
-                            
-                            A **fully functional** online store with shopping cart and checkout. Secure payment integration and inventory management.
-                            
-                            <div class="tech-stack">
-                                <span class="tech-badge">React</span>
-                                <span class="tech-badge">Node.js</span>
-                                <span class="tech-badge">MongoDB</span>
-                            </div>
-                        </div>
-                    </div>
-                </script>
-            </section>
-            
-            <!-- Slide 5: Contact & Next Steps -->
-            <section class="center" data-markdown>
-                <script type="text/template">
-                    ## Let's Work Together
-                    
-                    <div class="image-container">
-                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=500&h=300&fit=crop" 
-                             alt="Contact and Collaboration" 
-                             class="presentation-image">
-                    </div>
-                    
-                    <div class="contact-info">
-                        ### 📞 Get In Touch
-                        
-                        **Ready to start your project?**
-                        
-                        Contact me today for a **free consultation**!
-                    </div>
-                    
-                    <div class="service-card">
-                        ### 📧 Contact Information
-                        
-                        - **Email:** lahcene@example.com
-                        - **Phone:** +123 456 7890
-                        - **LinkedIn:** linkedin.com/in/lahcene
-                        - **GitHub:** github.com/lahcene
-                    </div>
-                    
-                    <div class="service-card">
-                        ### 🌐 Live Portfolio
-                        
-                        Visit my live portfolio to see more of my work:
-                        
-                        [View Portfolio](https://enechal.github.io/Lahcene-Portfolio/){: .portfolio-link}
-                    </div>
-                    
-                    *Thank you for your time!* 👋
+# Let's Work Together
+
+![Contact](https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=300&fit=crop)
+
+<div class="slide-contact">
+### 📞 Get In Touch
+
+- **Email:** lahcene@example.com
+- **Phone:** +123 456 7890
+- **LinkedIn:** [linkedin.com/in/lahcene](https://linkedin.com/in/lahcene)
+- **GitHub:** [github.com/lahcene](https://github.com/lahcene)
+</div>
                 </script>
             </section>
             
@@ -493,33 +492,11 @@
     <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/zoom/zoom.js"></script>
     
     <script>
-        // Fullscreen toggle function
-        function toggleFullscreen() {
-            if (!document.fullscreenElement) {
-                document.documentElement.requestFullscreen().catch(err => {
-                    console.log(`Error attempting to enable fullscreen: ${err.message}`);
-                });
-            } else {
-                document.exitFullscreen();
-            }
-        }
-        
-        // Auto-enter fullscreen on load
-        document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(() => {
-                if (!document.fullscreenElement) {
-                    document.documentElement.requestFullscreen().catch(err => {
-                        console.log(`Error attempting to enable fullscreen: ${err.message}`);
-                    });
-                }
-            }, 1000);
-        });
-        
         Reveal.initialize({
             // Navigation - Both vertical and horizontal
             hash: true,
             navigationMode: 'both', // Enable both vertical and horizontal navigation
-            controls: false, // Hide default controls since we have custom ones
+            controls: true, // Show default controls
             progress: true,
             center: false,
             touch: true,
@@ -559,6 +536,15 @@
                 breaks: true
             }
         });
+
+        // Scroll the whole window up or down
+        function windowScroll(direction) {
+            window.scrollBy({
+                top: direction * 100,
+                left: 0,
+                behavior: 'smooth'
+            });
+        }
     </script>
 </body>
 </html> 
