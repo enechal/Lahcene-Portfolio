@@ -214,8 +214,8 @@
             font-weight: bold;
         }
         
-        /* Simple Navigation - 4 Buttons */
-        .simple-nav {
+        /* Directional Navigation - 4 Buttons */
+        .directional-nav {
             position: fixed;
             bottom: 30px;
             left: 50%;
@@ -275,19 +275,19 @@
         📺 Fullscreen Presentation
     </div>
     
-    <!-- Simple Navigation - 4 Buttons -->
-    <div class="simple-nav">
-        <button class="nav-button" onclick="Reveal.navigatePrev()" title="Previous Slide">
+    <!-- Directional Navigation - 4 Buttons (Up, Down, Left, Right) -->
+    <div class="directional-nav">
+        <button class="nav-button" onclick="Reveal.navigateUp()" title="Up">
+            ↑
+        </button>
+        <button class="nav-button" onclick="Reveal.navigateDown()" title="Down">
+            ↓
+        </button>
+        <button class="nav-button" onclick="Reveal.navigateLeft()" title="Left">
             ←
         </button>
-        <button class="nav-button" onclick="Reveal.navigateNext()" title="Next Slide">
+        <button class="nav-button" onclick="Reveal.navigateRight()" title="Right">
             →
-        </button>
-        <button class="nav-button" onclick="Reveal.toggleOverview()" title="Overview">
-            ⊞
-        </button>
-        <button class="nav-button" onclick="toggleFullscreen()" title="Fullscreen">
-            ⛶
         </button>
     </div>
     
@@ -516,9 +516,9 @@
         });
         
         Reveal.initialize({
-            // Navigation - Simple horizontal only
+            // Navigation - Both vertical and horizontal
             hash: true,
-            navigationMode: 'default', // Simple horizontal navigation
+            navigationMode: 'both', // Enable both vertical and horizontal navigation
             controls: false, // Hide default controls since we have custom ones
             progress: true,
             center: false,
