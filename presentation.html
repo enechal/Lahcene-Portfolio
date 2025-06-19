@@ -18,9 +18,17 @@
             --card-bg: #ffffff;
         }
         
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        
         .reveal {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100vh;
+            width: 100vw;
         }
         
         .reveal .slides {
@@ -28,6 +36,8 @@
             border-radius: 15px;
             margin: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            height: calc(100vh - 40px);
+            width: calc(100vw - 40px);
         }
         
         .reveal h1, .reveal h2, .reveal h3 {
@@ -47,6 +57,8 @@
         .reveal .slides section {
             text-align: left;
             padding: 40px;
+            height: 100%;
+            box-sizing: border-box;
         }
         
         .reveal .slides section.center {
@@ -201,9 +213,146 @@
             font-size: 0.8em;
             font-weight: bold;
         }
+        
+        /* Custom Navigation Buttons */
+        .custom-nav {
+            position: fixed;
+            z-index: 1000;
+            background: rgba(52, 152, 219, 0.9);
+            border-radius: 50px;
+            padding: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .custom-nav:hover {
+            background: rgba(52, 152, 219, 1);
+            transform: scale(1.1);
+        }
+        
+        .nav-button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 10px;
+            margin: 0 5px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .nav-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.2);
+        }
+        
+        .nav-button:active {
+            transform: scale(0.95);
+        }
+        
+        /* Horizontal Navigation */
+        .nav-horizontal {
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+        
+        /* Vertical Navigation */
+        .nav-vertical {
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        /* Navigation Labels */
+        .nav-label {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .nav-button:hover .nav-label {
+            opacity: 1;
+        }
+        
+        /* Fullscreen indicator */
+        .fullscreen-indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(52, 152, 219, 0.9);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 25px;
+            font-size: 14px;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
     </style>
 </head>
 <body>
+    <!-- Fullscreen Indicator -->
+    <div class="fullscreen-indicator">
+        📺 Fullscreen Presentation
+    </div>
+    
+    <!-- Horizontal Navigation -->
+    <div class="custom-nav nav-horizontal">
+        <button class="nav-button" onclick="Reveal.navigatePrev()" title="Previous Slide">
+            ←
+            <span class="nav-label">Previous</span>
+        </button>
+        <button class="nav-button" onclick="Reveal.navigateNext()" title="Next Slide">
+            →
+            <span class="nav-label">Next</span>
+        </button>
+        <button class="nav-button" onclick="Reveal.toggleOverview()" title="Overview">
+            ⊞
+            <span class="nav-label">Overview</span>
+        </button>
+        <button class="nav-button" onclick="toggleFullscreen()" title="Fullscreen">
+            ⛶
+            <span class="nav-label">Fullscreen</span>
+        </button>
+    </div>
+    
+    <!-- Vertical Navigation -->
+    <div class="custom-nav nav-vertical">
+        <button class="nav-button" onclick="Reveal.navigateUp()" title="Up">
+            ↑
+            <span class="nav-label">Up</span>
+        </button>
+        <button class="nav-button" onclick="Reveal.navigateDown()" title="Down">
+            ↓
+            <span class="nav-label">Down</span>
+        </button>
+        <button class="nav-button" onclick="Reveal.navigateLeft()" title="Left">
+            ←
+            <span class="nav-label">Left</span>
+        </button>
+        <button class="nav-button" onclick="Reveal.navigateRight()" title="Right">
+            →
+            <span class="nav-label">Right</span>
+        </button>
+    </div>
+    
     <div class="reveal">
         <div class="slides">
             
@@ -461,11 +610,33 @@
     <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/zoom/zoom.js"></script>
     
     <script>
+        // Fullscreen toggle function
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => {
+                    console.log(`Error attempting to enable fullscreen: ${err.message}`);
+                });
+            } else {
+                document.exitFullscreen();
+            }
+        }
+        
+        // Auto-enter fullscreen on load
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                if (!document.fullscreenElement) {
+                    document.documentElement.requestFullscreen().catch(err => {
+                        console.log(`Error attempting to enable fullscreen: ${err.message}`);
+                    });
+                }
+            }, 1000);
+        });
+        
         Reveal.initialize({
             // Navigation - Both vertical and horizontal
             hash: true,
             navigationMode: 'both', // Enable both vertical and horizontal navigation
-            controls: true,
+            controls: false, // Hide default controls since we have custom ones
             progress: true,
             center: false,
             touch: true,
